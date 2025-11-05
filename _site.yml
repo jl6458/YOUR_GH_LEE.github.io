@@ -1,0 +1,14 @@
+name: "Wow, homework"
+output_dir: "."
+navbar:
+  title: "P8105 Homework"
+  right:
+    - text: "Resume"
+      href: resume.html
+    - icon: fa-envelope fa-lg
+      href: mailto:<jl6458@cumc.columbia.edu>
+    - icon: fa-github fa-lg
+      href: https://github.com/jl6458/
+output:
+  html_document:
+    theme: darkly

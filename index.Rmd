@@ -1,12 +1,40 @@
 ---
-title: "My awesome website"
+title: "P8105_HW04_Web"
 output: 
   html_document:
     toc: true
     toc_float: true
-    theme: cerulean
 ---
+# This is P8105 Homework 04 website
 
-# This is Jeff's awesome website
+## Problem 01
+Create a personal website at <YOUR+GH_NAME>.github.io. This page can be an extensive as you'd like, but it should include at least:
 
-![](https://media.giphy.com/media/drXGoW1iudhKw/giphy.gif)
+### 01. Landing Page
+A brief introductory landing page.
+
+### 02. Resume page
+A page giving your academic and professional experience.
+
+* [Resume](resume.html)
+* [Resume file](~/Desktop/p8105/YOUR_GH_LEE.github.io/Resume.pdf)
+
+### 03. Link to GitHub account, email, and P8105 GitHub
+Links in the site navigation for your 
+
+* [GitHub account](https://github.com/jl6458)
+* [Email](jl6458@cumc.columbia.edu)
+* [Linkedin](https://www.linkedin.com/in/jiseunglee22)
+
+## 02 Problem 
+
+Create a flexdashboard using plotly for that includes at least three distinct plot types (e.g. scatterplots, line plots, bar plots, box plots, etc.).
+Use one of the following datasets, and load from the p8105.datasets package:
+
+Instacart
+NY NOAA
+NYC Restaurant Inspections
+These datasets are large; you may want / need to filter or randomly sample from the complete dataset to ensure a reasonable product.
+
+
+

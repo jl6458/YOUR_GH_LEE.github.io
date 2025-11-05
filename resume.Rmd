@@ -1,0 +1,54 @@
+---
+title: "Resume_hw4"
+author: "Jiseung Lee"
+date: "2025-11-05"
+output: html_document
+theme: darkly
+---
+# Resume
+## 02. Resume page
+A page giving your academic and professional experience.
+
+* [Resume](~/Desktop/p8105/YOUR_GH_LEE.github.io/Resume.pdf)
+
+# MS. JISEUNG LEE
+917-273–0949 | jl6458@cumc.columbia.edu
+
+### EDUCATIONS
+Korea University College of Medicine, Seoul, South Korea M.D. in Doctor of Medicine Program, February 2023 
+
+Physician-Scientist Research Scholarship, 2019 – 2020
+
+Korea University College of Life Science and Biotechnology, Seoul, South Korea B.S. in Life Sciences, February 2017
+
+Academic Excellence Scholarship, National Science & Technology Scholarship
+
+### PEER-REVIEWED PUBLICATIONS
+Association between Work-Family Conflict and Depressive Symptoms in Female Workers, an Exploration of Potential Moderators, Journal of Psychiatric Research, Volume 151, 2022 (IF 4.4, Citation 20).
+
+Association between High-Sensitivity C-Reactive Protein Levels and Depression, Moderation by Age, Sex, Obesity, and Aerobic Physical Activity, Journal of Affective Disorders, Volume 291, 2021 (IF 6.6, Citation 16).
+
+### CLINICAL EXPERIENCE
+University of Alabama, Heersink School of Medicine, Birmingham, Alabama
+International Visiting Medical Student, [October 2022 – December 2022]
+
+Performed preliminary examinations on newly admitted patients and followed up on patients’ overnight progress. Presented patients in morning rounds and participated in developing treatment plans. Assisted Diabetic Education Program.
+
+Prasad Medical Center & Brooklyn Cancer Care, Brooklyn, New York
+Externship, [May 2022 – June 2022]
+
+Pre-examined patients in an outpatient setting. Drafted reports on patient symptoms and presented them to supervising doctors. Managed patients’ electronic medical history. Collected patients’ medical history by communicating with other hospitals and clinics.
+
+Korea University Hospital, various locations, South Korea
+Student Doctor, [February 2020 – June 2021]
+
+Performed preliminary examinations of patients, patient presentations, case presentations, disease presentations, patient admissions, and drafted follow-up reports. Participated in seminars and lectures for residents and attending physicians.
+
+### RESEARCH EXPERIENCE
+Korea University College of Medicine, Physician-Scientist Research Program, Seoul, South Korea Student Researcher, [December 2019 – December 2020]
+
+Drafted questionnaires for detecting Gastroesophageal Reflux Disease-related symptoms in obese patients for purposes of evaluating the impact of Laparoscopic Sleeve Gastrectomy. Presented a poster at Medical Student Research based on the data collected and organized for clinical trials.
+
+Seoul National University Cancer Research Institute, Antibody Engineering, Seoul, South Korea Intern, [December 2015 – February 2016]
+
+Conducted pharmaceutical research by analyzing biomarkers and targeted antibodies based on Phage Display technology. Presented findings from the research at weekly internal meetings.
