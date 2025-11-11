@@ -1,0 +1,137 @@
+---
+title: "Plotly_hw4"
+author: "Jiseung Lee"
+date: "2025-11-05"
+output: html_document
+theme: darkly
+---
+
+Problem 02
+
+## 02 Problem 
+Create a flexdashboard using plotly for that includes at least three distinct plot types 
+(e.g. scatterplots, line plots, bar plots, box plots, etc.).
+Use one of the following datasets, and load from the p8105.datasets package:
+
+Instacart
+NY NOAA
+NYC Restaurant Inspections
+These datasets are large; you may want / need to filter or randomly sample from the complete dataset to ensure a reasonable product.
+
+
+```{r}
+library(p8105.datasets)
+library(tidyverse)
+library(plotly)
+library(flexdashboard)
+library(dplyr)
+data("rest_inspec")
+```
+
+```{r}
+rest_inspec = 
+  rest_inspec %>%
+  select(boro, latitude, longitude, dba, street, inspection_date, critical_flag, score, grade, grade_date, violation_description) %>%
+  filter(
+    boro == "Manhattan",
+    !is.na(latitude), 
+    !is.na(longitude)
+  ) %>%
+  drop_na(inspection_date, critical_flag, score, grade, grade_date)
+```
+
+## Plotly plots: Inspection Analysis
+
+### Scatter Plot
+
+
+```{r}
+scatter_plot =
+  plot_ly(data = rest_inspec, 
+                         x = ~grade, 
+                         y = ~score, 
+                         type = 'scatter', 
+                         mode = 'markers',
+                         marker = list(size = 5, color = 'rgba(0, 128, 0, 0.7)')) %>%
+  layout(title = "Inspection Score vs. Number of Violations",
+         xaxis = list(title = "Number of Violations"),
+         yaxis = list(title = "Inspection Score"))
+```
+
+
+```{r}
+# Load necessary library
+library(plotly)
+
+# Filter out entries where 'grade' or 'inspection_score' are NA
+rest_inspec_filtered <- rest_inspec %>%
+  filter(!is.na(grade), !is.na(inspection_score))
+
+# Create the scatter plot
+catter_plot <- plot_ly(data = rest_inspec_filtered, 
+                        x = ~grade, 
+                        y = ~inspection_score, 
+                        type = 'scatter', 
+                        mode = 'markers',
+                        marker = list(size = 5, color = 'rgba(0, 128, 0, 0.7)')) %>%
+  layout(title = "Inspection Score vs. Number of Violations",
+         xaxis = list(title = "Grade"),          # Adjusting the title
+         yaxis = list(title = "Inspection Score"))
+
+# Display the plot
+catter_plot
+```
+
+
+```{r}
+# Load the NYC Restaurant Inspections dataset
+data("nyc_restaurant_inspections")
+
+# Take a random sample of the data for demonstration purposes
+set.seed(123)  # For reproducibility
+sample_data <- nyc_restaurant_inspections %>% 
+  sample_n(1000)  # Sample 1000 rows from the dataset
+
+# Check the structure of the sample data
+str(sample_data)
+```
+
+```{r}
+### Scatter Plot
+scatter_plot <- plot_ly(data = sample_data, 
+                         x = ~num_violations, 
+                         y = ~inspection_score, 
+                         type = 'scatter', 
+                         mode = 'markers',
+                         marker = list(size = 5, color = 'rgba(0, 128, 0, 0.7)')) %>%
+  layout(title = "Inspection Score vs. Number of Violations",
+         xaxis = list(title = "Number of Violations"),
+         yaxis = list(title = "Inspection Score"))
+```
+
+```{r}
+
+### Bar Plot
+bar_plot <- plot_ly(data = sample_data, 
+                     x = ~cuisine_description, 
+                     type = 'bar', 
+                     marker = list(color = 'rgba(255, 99, 71, 0.7)')) %>%
+  layout(title = "Count of Restaurants by Cuisine Type",
+         xaxis = list(title = "Cuisine Type"),
+         yaxis = list(title = "Count"),
+         barmode = 'group')
+```
+
+
+```{r}
+### Box Plot
+box_plot <- plot_ly(data = sample_data, 
+                     y = ~inspection_score, 
+                     x = ~borough, 
+                     type = 'box', 
+                     marker = list(color = 'rgba(100, 149, 237, 0.7)')) %>%
+  layout(title = "Distribution of Inspection Scores by Borough",
+         xaxis = list(title = "Borough"),
+         yaxis = list(title = "Inspection Score"))
+```
+
