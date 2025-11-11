@@ -26,15 +26,3 @@ Links in the site navigation for your
 * [Email](jl6458@cumc.columbia.edu)
 * [Linkedin](https://www.linkedin.com/in/jiseunglee22)
 
-## 02 Problem 
-
-Create a flexdashboard using plotly for that includes at least three distinct plot types (e.g. scatterplots, line plots, bar plots, box plots, etc.).
-Use one of the following datasets, and load from the p8105.datasets package:
-
-Instacart
-NY NOAA
-NYC Restaurant Inspections
-These datasets are large; you may want / need to filter or randomly sample from the complete dataset to ensure a reasonable product.
-
-
-
