@@ -1,0 +1,158 @@
+---
+title: "NYC Manhattan Restaurant Inspections Dashboard"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+    theme: cosmo
+---
+
+```{r setup, include=FALSE}
+library(p8105.datasets)
+library(tidyverse)
+library(plotly)
+library(flexdashboard)
+library(dplyr)
+
+# Load and clean data
+data("rest_inspec")
+
+rest_inspec = 
+  rest_inspec %>%
+  select(boro, latitude, longitude, dba, street, inspection_date, 
+         critical_flag, score, grade, grade_date, violation_description) %>%
+  filter(
+    boro == "Manhattan",
+    !is.na(latitude), 
+    !is.na(longitude)
+  ) %>%
+  drop_na(inspection_date, critical_flag, score, grade, grade_date)
+```
+
+Column {data-width=350}
+-----------------------------------------------------------------------
+
+### Restaurant Locations in Manhattan (Scatter Plot)
+
+```{r}
+# Scatter plot showing geographic distribution of restaurants
+location_plot <- rest_inspec %>%
+  sample_n(min(2000, nrow(rest_inspec))) %>%  # Sample for performance
+  mutate(grade_color = case_when(
+    grade == "A" ~ "green",
+    grade == "B" ~ "yellow",
+    grade == "C" ~ "orange",
+    TRUE ~ "red"
+  )) %>%
+  plot_ly(
+    x = ~longitude, 
+    y = ~latitude, 
+    type = "scatter", 
+    mode = "markers",
+    color = ~grade,
+    colors = c("A" = "#2ecc71", "B" = "#f39c12", "C" = "#e74c3c"),
+    text = ~paste("Restaurant:", dba, "<br>Grade:", grade, "<br>Score:", score),
+    hoverinfo = "text",
+    marker = list(size = 6, opacity = 0.6)
+  ) %>%
+  layout(
+    title = "Geographic Distribution of Restaurants by Grade",
+    xaxis = list(title = "Longitude"),
+    yaxis = list(title = "Latitude"),
+    showlegend = TRUE
+  )
+
+location_plot
+```
+
+### Grade Distribution (Bar Plot)
+
+```{r}
+# Bar plot showing count of restaurants by grade
+grade_summary <- rest_inspec %>%
+  count(grade) %>%
+  arrange(desc(n))
+
+bar_plot <- plot_ly(
+  data = grade_summary,
+  x = ~grade,
+  y = ~n,
+  type = "bar",
+  marker = list(
+    color = c("#2ecc71", "#f39c12", "#e74c3c", "#95a5a6"),
+    line = list(color = "rgb(8,48,107)", width = 1.5)
+  ),
+  text = ~n,
+  textposition = "outside"
+) %>%
+  layout(
+    title = "Distribution of Restaurant Grades",
+    xaxis = list(title = "Grade", categoryorder = "array", 
+                 categoryarray = c("A", "B", "C", "Z", "P")),
+    yaxis = list(title = "Number of Restaurants"),
+    showlegend = FALSE
+  )
+
+bar_plot
+```
+
+Column {data-width=650}
+-----------------------------------------------------------------------
+
+### Inspection Score Distribution by Grade (Box Plot)
+
+```{r}
+# Box plot comparing scores across grades
+box_plot <- rest_inspec %>%
+  filter(grade %in% c("A", "B", "C")) %>%
+  plot_ly(
+    y = ~score,
+    x = ~grade,
+    type = "box",
+    color = ~grade,
+    colors = c("A" = "#2ecc71", "B" = "#f39c12", "C" = "#e74c3c"),
+    boxmean = "sd"
+  ) %>%
+  layout(
+    title = "Inspection Score Distribution by Grade",
+    xaxis = list(title = "Grade", categoryorder = "array", 
+                 categoryarray = c("A", "B", "C")),
+    yaxis = list(title = "Inspection Score"),
+    showlegend = FALSE
+  )
+
+box_plot
+```
+
+### Inspection Score vs Grade (Enhanced Scatter Plot)
+
+```{r}
+# Enhanced scatter plot with jitter to show density
+score_grade_plot <- rest_inspec %>%
+  filter(grade %in% c("A", "B", "C")) %>%
+  sample_n(min(3000, nrow(filter(rest_inspec, grade %in% c("A", "B", "C"))))) %>%
+  plot_ly(
+    x = ~grade,
+    y = ~score,
+    type = "scatter",
+    mode = "markers",
+    color = ~grade,
+    colors = c("A" = "#2ecc71", "B" = "#f39c12", "C" = "#e74c3c"),
+    marker = list(
+      size = 8,
+      opacity = 0.5,
+      line = list(color = "white", width = 0.5)
+    ),
+    text = ~paste("Restaurant:", dba, "<br>Score:", score, "<br>Grade:", grade),
+    hoverinfo = "text"
+  ) %>%
+  layout(
+    title = "Inspection Scores by Restaurant Grade",
+    xaxis = list(title = "Grade", categoryorder = "array", 
+                 categoryarray = c("A", "B", "C")),
+    yaxis = list(title = "Inspection Score"),
+    showlegend = FALSE
+  )
+
+score_grade_plot
+```
