@@ -9,7 +9,7 @@ name: Render and Deploy
 
 jobs:
   build-and-deploy:
-    runs-on: ubuntu-latest 
+    runs-on: ubuntu-latest
     permissions:
       contents: write
       pages: write
@@ -42,6 +42,7 @@ jobs:
             # This line correctly installs your class package from GitHub
             github::cu-p8105/p8105.datasets 
       
+      # THIS STEP IS NOW CORRECTLY INDENTED
       - name: Install pandoc
         uses: r-lib/actions/setup-pandoc@v2
 
