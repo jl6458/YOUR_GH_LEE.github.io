@@ -1,10 +1,6 @@
 ---
 title: "NYC Manhattan Restaurant Inspections Dashboard"
-output: 
-  flexdashboard::flex_dashboard:
-    orientation: columns
-    vertical_layout: fill
-    theme: cosmo
+output: html_document
 ---
 
 ```{r setup, include=FALSE}
