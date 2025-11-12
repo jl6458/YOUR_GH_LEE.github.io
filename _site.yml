@@ -1,5 +1,5 @@
 name: "Wow, homework"
-output_dir: "."
+output_dir: "_site"
 navbar:
   title: "P8105 Homework"
   right:
