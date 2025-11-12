@@ -1,8 +1,10 @@
 name: "Wow, homework"
 output_dir: "_site"
+
 navbar:
   title: "P8105 Homework"
   right:
+  
     - text: "Resume"
       href: resume.html
       
@@ -17,3 +19,4 @@ navbar:
 output:
   html_document:
     theme: darkly
+    
