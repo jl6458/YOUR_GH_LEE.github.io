@@ -31,7 +31,11 @@ jobs:
             any::tidyverse
             any::DT
             any::ggplot2
-            github::cu-p8105/p8105.datasets
+            any::devtools
+      
+      - name: Install p8105.datasets from GitHub
+        run: |
+          R -e 'devtools::install_github("P8105/p8105.datasets")'
       
       - name: Install pandoc
         uses: r-lib/actions/setup-pandoc@v2
