@@ -1,5 +1,5 @@
 # This is the complete, correct workflow file.
-# Replace your .github/workflows/deploy.yml with this.
+# Replace your .github/workflows/deploy.yml with this .
 
 on:
   push:
