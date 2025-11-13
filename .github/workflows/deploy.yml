@@ -32,6 +32,8 @@ jobs:
             any::DT
             any::ggplot2
             any::devtools
+            any::plotly
+            any::flexdashboard
       
       - name: Install p8105.datasets from GitHub
         run: |
