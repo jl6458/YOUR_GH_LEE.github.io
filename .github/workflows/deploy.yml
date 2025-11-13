@@ -35,7 +35,7 @@ jobs:
       
       - name: Install p8105.datasets from GitHub
         run: |
-          R -e 'devtools::install_github("P8105/p8105.datasets", auth_token = Sys.getenv("GITHUB_TOKEN"))'
+          R -e 'devtools::install_github("p8105/p8105.datasets", auth_token = Sys.getenv("GITHUB_TOKEN"))'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       
