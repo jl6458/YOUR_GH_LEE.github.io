@@ -1,12 +1,7 @@
-# This is the complete, correct workflow file.
-# Replace your .github/workflows/deploy.yml with this .
-
 on:
   push:
     branches: [main, master]
-
 name: Render and Deploy
-
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
@@ -18,42 +13,37 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
-
+        
       - name: Set up R
         uses: r-lib/actions/setup-r@v2
-
-      # This step installs system-level software that R packages often need
+        
       - name: Install system dependencies
         run: |
           sudo apt-get update
           sudo apt-get install -y libcurl4-openssl-dev libssl-dev libxml2-dev pandoc
           
-      # THIS IS THE CORRECTED INSTALLATION STEP:
       - name: Install R package dependencies
         uses: r-lib/actions/setup-r-dependencies@v2
         with:
-          # This list tells the action all the packages you need
-          packages:
+          packages: |
             any::rmarkdown
             any::pagedown
             any::tidyverse
             any::DT
             any::ggplot2
-            # This line correctly installs your class package from GitHub
-            github::cu-p8105/p8105.datasets 
+            github::cu-p8105/p8105.datasets
       
-      # THIS STEP IS NOW CORRECTLY INDENTED
       - name: Install pandoc
         uses: r-lib/actions/setup-pandoc@v2
-
+        
       - name: Render Site
         run: R -e "rmarkdown::render_site(encoding = 'UTF-8')"
-
+        
       - name: Upload Pages Artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: '_site' # The folder where your site is built
-
+          path: '_site'
+          
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
